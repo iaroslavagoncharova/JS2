@@ -10,10 +10,19 @@ for (let i = 0; i < nof_c; i++) {
 }
 let num_vot = parseInt(prompt('Number of voters: '))
 for (let i = 0; i < num_vot; i++) {
-    let vote = prompt('Who do you vote for? Give a number: ')
-    if (vote === candidates[vote+1]) {
-        candidates.candidate[vote+1].votes += 1
+    let vote = prompt('Who do you vote for? Give a name: ')
+    for (let x = 0; x < candidates.length; x++) {
+        if (vote == candidates[x].name) {
+            candidates[x].votes ++
+        }
     }
 }
-console.log(candidates)
+candidates.sort((a, b) => {
+   return b.votes - a.votes;
+});
+console.log('The winner is ' + candidates[0].name + ' with ' + candidates[0].votes + ' votes')
+for (let i = 0; i < candidates.length; i++) {
+    console.log(candidates[i].name + ': ' + candidates[i].votes + ' votes')
+}
+
 
